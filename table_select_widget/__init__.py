@@ -52,6 +52,7 @@ class TableSelectMultiple(SelectMultiple):
         bootstrap_style=False,
         datatable_options={},
         table_classes=None,
+        use_required_attr=True,
         *args,
         **kwargs
     ):
@@ -75,6 +76,10 @@ class TableSelectMultiple(SelectMultiple):
         self.bootstrap_style = bootstrap_style
         self.datatable_options = datatable_options
         self.table_classes = table_classes
+        self.use_required_attr = use_required_attr
+ 
+    def use_required_attribute(self, initial):
+        return self.use_required_attr
 
     def _datatable_javascript(self, name):
         # Note: Paging cannot be easily turned on, because otherwise
