@@ -51,6 +51,7 @@ class TableSelectMultiple(SelectMultiple):
         enable_datatables=False,
         bootstrap_style=False,
         datatable_options={},
+        table_classes=None,
         use_required_attr=True,
         *args,
         **kwargs
@@ -74,8 +75,9 @@ class TableSelectMultiple(SelectMultiple):
         self.enable_datatables = enable_datatables
         self.bootstrap_style = bootstrap_style
         self.datatable_options = datatable_options
+        self.table_classes = table_classes
         self.use_required_attr = use_required_attr
-
+ 
     def use_required_attribute(self, initial):
         return self.use_required_attr
 
@@ -105,6 +107,8 @@ class TableSelectMultiple(SelectMultiple):
         table_classes = "display"
         if self.bootstrap_style:
             table_classes += " table table-sm table-bordered"
+        if self.table_classes:
+            table_classes += ' {}'.format(self.table_classes)
         output.append(
             '<table id={} class="{}">'.format(escape(name), table_classes),
         )
